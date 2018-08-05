@@ -1,0 +1,77 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/5/29 0029
+ * Time: 上午 9:27
+ */
+
+namespace Application\Model;
+
+use Framework\Model;
+use  Framework\Tools;
+class DengluModel extends  Model
+{//登录验证的model
+    public  function  yanzheng($data){
+//判断session中的验证码和输入的验证码是否一致
+        @session_start();
+        $data['yanzhenma']=strtolower($data['yanzhenma']);//转化成大写
+        $_SESSION['yanzhenma']=strtolower($_SESSION['yanzhenma']);//统一转化成大写比较
+        if (!isset($data['yanzhenma'])||strtolower($_SESSION['yanzhenma'])!=strtolower($data['yanzhenma'])){
+            $this->error="验证码输入错误";
+            return false;
+        }
+
+        //验证码正确则查询输入的账户密码是否正确
+        $username=$data['username'];
+        //数据哭的验证码加密过,这里输入的密码也要加密比对
+//        $password=md5($data['password']);
+        $password=$data['password'];
+
+        //查询数据库中是否有值
+        $sql="select * from  `members` WHERE  username='{$username}'";
+        //执行sql
+        $result=$this->db->fetchRow($sql);
+        if (empty($result)){
+            $this->error="用户名错误";
+            return false;
+        }else{//用户名正确则验证密码是否一致
+            if ($result['password']!=$password){
+                $this->error="用户名或密码不正确";
+                return false;
+            }
+
+        }
+        //数据库有值查询是否有权限登录
+        $sql="select is_admin from  `members` WHERE  members_id='{$result['members_id']}'";
+        //执行sql
+        $cc=$this->db->fetchColumn($sql);
+        if ($cc==0){
+            $this->error='只有管理员才能登录后台';
+            return false;
+        }
+        //账户密码均验证通过,则可以保存用户信息到session中
+        @session_start();
+        $_SESSION['xinxi']=$result;
+        //如果用户勾选保存信息,则保存用户名,密码到cookie
+        //这里应该保存用户id和密码;
+        if (isset($data['rember'])){
+            setcookie('id',$result['members_id'],time()+3600*24*7,'/');
+            setcookie('password',$result['password'],time()+3600*24*7,'/');
+        };
+        //返回个人信息,首页使用
+        return $result;
+    }
+    //清除缓存
+    public function  huancun(){
+        //先清除session
+        @session_start();
+       unset($_SESSION['xinxi']);
+       unset($_SESSION['yanzhenma']);
+       //清除cookie的xinxi
+        setcookie('id','',time()-100,'/');
+        setcookie('password','',time()-100,'/');
+        //返回登录界面
+
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>美发后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="Public/Admin/imagesicon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="Public/Admin/css/style.css" />
+<script src="Public/Admin/javascript/jquery.js"></script>
+<script src="Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="Public/Admin/javascrip/tplug-ins/layerUi/layer.js"></script>
+<script src="Public/Admin/editor/ueditor.config.js"></script>
+<script src="Public/Admin/editor/ueditor.all.js"></script>
+<script src="Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<div class="main-wrap">
+	<?php require "Application/View/Admin/left.html"?>
+	<div class="content-wrap">
+		<?php require "Application/View/Admin/header.html"?>
+		<main class="main-cont content mCustomScrollbar">
+			<form action="index.php?p=Admin&c=Shop&a=index" method="post">
+				<div class="fr input-group">
+				商品:     <input type="text" name="name" size="15"  value="">
+					<input type="submit" value=" 搜索 " class="button" />
+				</div>
+			</form>
+
+			<table class="table table-bordered  mb-15">
+				<thead>
+				<tr>
+					<th>商品名</th>
+					<th>积分商品id</th>
+					<th>积分需求</th>
+					<th>库存</th>
+					<th>商品图</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php foreach($cc as $user):?>
+				<tr class="cen">
+					<td><?=$user['name']?></td>
+					<td><?=$user['shop_id']?></td>
+					<td><?=$user['number']?></td>
+					<td><?=$user['kucun']?></td>
+					<td><img src="<?=$user['logo']?>" alt=""></td>
+					<td>
+						<a href="index.php?p=Admin&c=Shop&a=edit&id=<?=$user['shop_id']?>" title="编辑" class="mr-5">编辑</a>
+						<a href="index.php?p=Admin&c=Shop&a=delete&id=<?=$user['shop_id']?>" title="删除">删除</a>
+					</td>
+				</tr>
+				<?php endforeach;?>
+				</tbody>
+			</table>
+			<!--分页-->
+			<div  class="panel-bd">
+				<?php echo $a ?>
+			</div>
+			<!--分页-->
+		</main>
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+			</p>
+		</footer>
+	</div>
+</div>
+</body>
+</html>

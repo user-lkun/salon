@@ -1,0 +1,44 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: asus
+ * Date: 2018/6/3
+ * Time: 12:44
+ */
+
+namespace Application\Controller\Admin;
+
+
+use Application\Model\JifensysModel;
+use Framework\Controller;
+use Framework\Tools\PageTool;
+
+
+class JifensysController extends Controller
+{
+    public function index(){
+        @session_start();
+        //准备空数组来保存搜索条件
+        $conditions=[];
+        //判断搜索条件是否为空
+        if (!empty($_REQUEST['username'])){//传了姓名
+            $conditions[]="(username like '%{$_REQUEST['username']}%' )";
+        }
+
+        //分页
+        $page=$_GET['page']??1;
+
+        $jifenModel = new JifensysModel();
+        $all_msg = $jifenModel->getAll($conditions,$page);
+
+        $rows=$all_msg['rows'];
+        $count=$all_msg['count'];
+        $page=$all_msg['page'];
+        $leng=$all_msg['leng'];
+        $page_html=PageTool::show($count,$page,$leng);//获取分页条
+
+        $this->assign('page_html',$page_html);
+        $this->assign('rows',$rows);
+        $this->display('index');
+    }
+}

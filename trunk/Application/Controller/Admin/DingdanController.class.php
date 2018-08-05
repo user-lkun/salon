@@ -1,0 +1,55 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: asus
+ * Date: 2018/6/4
+ * Time: 0:12
+ */
+
+namespace Application\Controller\Admin;
+
+
+use Application\Model\DingdanModel;
+use Framework\Controller;
+use Framework\Tools\PageTool;
+
+class DingdanController  extends Controller
+{
+    public function index(){
+
+        @session_start();
+        $conditions=[];
+        //判断搜索条件是否为空
+        if (!empty($_REQUEST['user_id'])){//传了code
+            $conditions[]="(user_id like '%{$_REQUEST['user_id']}%' )";
+        }
+
+        //分页
+        $page=$_GET['page']??1;
+        $dingdan = new DingdanModel();
+        $all_msg = $dingdan->getList($conditions,$page);
+
+        $rows=$all_msg['rows'];
+        $count=$all_msg['count'];
+        $page=$all_msg['page'];
+        $leng=$all_msg['leng'];
+        $page_html = PageTool::show($count,$page,$leng);//获取分页条
+
+
+        $this->assign('rows',$rows);
+        $this->assign('page_html',$page_html);
+        $this->display('index');
+    }
+    public function deal(){
+        $dingdan_id=$_GET['dingdan_id'];
+        $dingdan = new DingdanModel();
+        $dingdan->dealDingdan($dingdan_id);
+        $this->redirect('?p=Admin&c=Dingdan&a=index','处理成功!',0);
+    }
+    public function sendout(){
+        $dingdan_id=$_GET['dingdan_id'];
+        $dingdan = new DingdanModel();
+        $dingdan->dealSend($dingdan_id);
+        $this->redirect('?p=Admin&c=Dingdan&a=index','发货成功!',0);
+    }
+}

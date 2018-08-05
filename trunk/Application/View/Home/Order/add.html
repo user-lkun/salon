@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Contact - Hair Repair Website Template</title>
+	<link rel="stylesheet" href="./Public/Home/css/style.css" type="text/css">
+</head>
+<body>
+	<div id="header">
+		<div>
+			<div id="logo">
+				<a href="index.html"><img src="./Public/Home/images/logo.png" alt="LOGO"></a>
+			</div>
+
+		</div>
+	</div>
+	<div id="contents">
+		<div id="contact">
+			<h1>Contact</h1>
+			<img src="./Public/Home/images/telephone.png" alt="Img">
+			<p>
+				This website template has been collect from for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="#">Forum</a>.
+			</p>
+			<form action="index.php?p=Home&c=Order&a=add" enctype="multipart/form-data" method="post">
+				<table>
+					<tbody>
+						<tr>
+							<td><label>真实姓名:</label></td>
+							<td>   <input type="text" id="2" name="realname"  ></td>
+						</tr> <tr>
+							<td><label>预约电话：</label></td>
+							<td><input type="number" id="" name="phone" ></td>
+						</tr> <tr>
+							<td><label>预约日期:</label></td>
+							<td><input type="date" id="" name="date" ></td>
+						</tr> <tr>
+							<td><label>选择套餐：:</label></td>
+							<td><select name="barber">
+								<?php  foreach ($a as $v):?>
+								<option value="1"><?=$v['name']?></option>
+								<?php endforeach ?>
+							</select></td>
+						</tr> <tr>
+						</tr> <tr>
+							<td><label>预约美发师：:</label></td>
+							<td>  <select name="barber">
+								<?php  foreach ($c as $v):?>
+								<option value="<?=$v['username']?>"><?=$v['username']?></option>
+								<?php endforeach ?>
+							</select></td>
+						</tr> <tr>
+							<td><label> 备注：</label></td>
+							<td> <textarea placeholder="请输入内容" id="desc" name="content"></textarea>
+								<input type="submit" value="" class="btn"></td>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="articles">
+			<div class="header">
+				<div class="body">
+					<div>
+						<div class="section">
+							<h3>About us</h3>
+							<p>
+								This website template has been collect from for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="#">Forum</a>.
+							</p>
+						</div>
+						<div class="section">
+							<h3>Latest Blog Posts</h3>
+							<ul class="blog">
+								<li>
+									<p>
+										<span>Posted Feb. 21, 2023</span> <a href="blog.html">Choosing The Right Hair Color For You</a> Our website templates are created with inspiration, checked for quality and originality.
+									</p>
+								</li>
+								<li>
+									<p>
+										<span>Posted Feb. 20, 2023</span> <a href="blog.html">Color Trends For Spring 2023</a> What’s more, they’re absolutely free! You can do a lot with them. You can modify them.
+									</p>
+								</li>
+							</ul>
+						</div>
+						<div class="section">
+							<h3>Contact Information</h3>
+							<table class="info">
+								<tbody>
+									<tr>
+										<td>Address:</td>
+										<td>4982 Meadowview Drive Ashburn, VA 2014</td>
+									</tr> <tr>
+										<td>Phone:</td>
+										<td>540-754-4081</td>
+									</tr> <tr>
+										<td>Hours Open:</td>
+										<td>Tues- Sundays: 10 am- 9pm</td>
+									</tr>
+								</tbody>
+							</table>
+							<h3>Follow us</h3>
+							<div id="connect">
+								<a href="#" target="_blank" class="facebook"></a> <a href="#" target="_blank" class="twitter"></a> <a href="#" target="_blank" class="googleplus"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<form action="index.html" method="post">
+				<input type="text" value="Enter email address and get 10% off" class="txtfield" onMouseUp="return false;" onFocus="this.select();">
+				<input type="submit" value="SIGNUP" class="btn">
+			</form>
+			<p>
+				&copy; Copyright &copy; 2013.Company name All rights reserved.<a target="_blank" href="://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+			</p>
+		</div>
+	</div>
+<div style="display:none"><script src='://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>

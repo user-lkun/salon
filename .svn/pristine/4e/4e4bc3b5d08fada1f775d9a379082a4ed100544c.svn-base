@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>美发后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="Public/Admin/imagesicon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="Public/Admin/css/style.css" />
+<script src="Public/Admin/javascript/jquery.js"></script>
+<script src="Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="Public/Admin/javascrip/tplug-ins/layerUi/layer.js"></script>
+<script src="Public/Admin/editor/ueditor.config.js"></script>
+<script src="Public/Admin/editor/ueditor.all.js"></script>
+<script src="Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<div class="main-wrap">
+	<?php require "Application/View/Admin/left.html"?>
+	<div class="content-wrap">
+		<?php require "Application/View/Admin/header.html"?>
+		<main class="main-cont content mCustomScrollbar">
+			<a href="index.php?p=Admin&c=member&a=add">
+				<button class="btn btn-primary radius">添加管理员</button>
+			</a>
+			<form action="index.php?p=Admin&c=Member&a=index" method="post">
+				<div class="fr input-group">
+				用户名:    <input type="text" name="user" size="15" />
+				性别:     <input type="text" name="sex" size="15" />
+					<input type="submit" value=" 搜索 " class="button" />
+				</div>
+			</form>
+
+			<table class="table table-bordered  mb-15">
+				<thead>
+				<tr>
+					<th>员工id</th>
+					<th>用户名</th>
+					<th>密码</th>
+					<th>真实姓名</th>
+					<th>性别</th>
+					<th>手机</th>
+					<th>头像</th>
+					<th>所属部门</th>
+					<th>最后登录时间</th>
+					<th>最后登录IP</th>
+					<th>权限管理</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php foreach($cc as $user):?>
+				<tr class="cen">
+					<td><?=$user['members_id']?></td>
+					<td><?=$user['username']?></td>
+					<td><?=$user['password']?></td>
+					<td><?=$user['realname']?></td>
+					<td><?=$user['sex']?></td>
+					<td><?=$user['telephone']?></td>
+					<td><img src="<?=$user['photo']?>" alt=""></td>
+					<td><?=$user['group_id']?></td>
+					<td><?=date("Y-m-d H:i:s",$user['last_login_time'])?></td>
+					<td><?=$_SERVER["REMOTE_ADDR"]?></td>
+					<td><?=$user['is_admin']?'是':'否'?></td>
+						<td><a href="index.php?p=Admin&c=Member&a=shenhe&id=<?=$user['members_id']?>&status=<?=$user['is_admin']?>"><?=$user['is_admin']?'启用':'不启用' ?></a></td>
+					<td>
+						<a href="index.php?p=Admin&c=Member&a=edit&id=<?=$user['members_id']?>" title="编辑" class="mr-5">编辑</a>
+						<a href="index.php?p=Admin&c=Member&a=delete&id=<?=$user['members_id']?>" title="删除">删除</a>
+					</td>
+				</tr>
+				<?php endforeach;?>
+				</tbody>
+			</table>
+			<!--分页-->
+			<div  class="panel-bd">
+				<?php echo $a ?>
+			</div>
+			<!--分页-->
+		</main>
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+			</p>
+		</footer>
+	</div>
+</div>
+</body>
+</html>

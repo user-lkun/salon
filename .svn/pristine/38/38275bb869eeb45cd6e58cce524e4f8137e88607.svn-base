@@ -1,0 +1,157 @@
+<div class="side-nav">
+    <div class="side-logo">
+        <div class="logo">
+				<span class="logo-ico">
+					<i class="i-l-1"></i>
+					<i class="i-l-2"></i>
+					<i class="i-l-3"></i>
+				</span>
+            <strong>美发后台管理系统</strong>
+        </div>
+    </div>
+
+    <nav class="side-menu content mCustomScrollbar" data-mcs-theme="minimal-dark">
+        <h2>
+            <a href="?p=Admin&c=Index&a=index" class="InitialPage"><i class="icon-dashboard"></i>后台首页</a>
+        </h2>
+        <ul>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>美发套餐管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=Plans&a=index">美发套餐列表</a>
+                    </dd>
+                    <dd>
+                        <a href="?p=Admin&c=Plans&a=add">添加套餐</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>代金券管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=Daijinquan&a=index">代金券列表</a>
+                    </dd>
+                    <dd>
+                        <a href="?p=Admin&c=Daijinquan&a=add">添加代金券</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>会员管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=User&a=index">会员列表</a>
+                    </dd>
+                    <dd>
+                        <a href="?p=Admin&c=Full&a=index">会员充值规则</a>
+                    </dd>
+                    <dd>
+                        <a href="?p=Admin&c=User&a=add">添加会员</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>日志管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=Histories&a=index">日志列表</a>
+                    </dd>
+
+                </dl>
+            </li>
+
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>部门管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                         <a href="index.php?p=Admin&c=group&a=index">部门列表</a>
+                    </dd>
+
+                </dl>
+            </li>
+
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-spinner"></i>员工管理<i class="icon-angle-right"></i>
+                    </dt>
+
+                    <dd>
+                        <a href="index.php?p=Admin&c=member&a=index">员工列表</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-fighter-jet"></i>热门活动<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="index.php?p=Admin&c=Article&a=index">最新活动</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-fighter-jet"></i>订单管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=Dingdan&a=index">订单列表</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-fighter-jet"></i>客户预约<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="index.php?p=Admin&c=Order&a=admin">最新预约</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-fighter-jet"></i>积分管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="index.php?p=Admin&c=Jifensys&a=index">积分记录列表</a>
+                    </dd>
+                </dl>
+            </li>
+
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-fighter-jet"></i>积分商城<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="index.php?p=Admin&c=Shop&a=index">商城列表</a>
+                    </dd>
+                    <dd>
+                        <a href="index.php?p=Admin&c=Shop&a=add">商品添加</a>
+                    </dd>
+                </dl>
+            </li>
+
+
+
+
+        </ul>
+    </nav>
+    <footer class="side-footer">© DeathGhost 版权所有</footer>
+</div>

@@ -1,0 +1,26 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/6/2 0002
+ * Time: 下午 3:32
+ */
+
+namespace Application\Model;
+
+
+use Framework\Model;
+
+class ArticModel extends  Model
+{
+    //根据有效时间查询有效活动
+ public function  index(){
+     //当前时间
+     $dang=time();
+     //查询所有结束时间大于当前时间的活动
+     $sql="select * from `article` WHERE end>{$dang} and status=1";
+     //执行sql
+     $result=$this->db->fetchRow($sql);
+   return $result;
+ }
+}

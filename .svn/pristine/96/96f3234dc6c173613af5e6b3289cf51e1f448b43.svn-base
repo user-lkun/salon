@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理系统-HTML5后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="./Public/Admin/images/icon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="./Public/Admin/css/style.css" />
+<script src="./Public/Admin/javascript/jquery.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/layerUi/layer.js"></script>
+<script src="./Public/Admin/editor/ueditor.config.js"></script>
+<script src="./Public/Admin/editor/ueditor.all.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="./Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<div class="main-wrap">
+	<div class="side-nav">
+		<div class="side-logo">
+			<div class="logo">
+				<span class="logo-ico">
+					<i class="i-l-1"></i>
+					<i class="i-l-2"></i>
+					<i class="i-l-3"></i>
+				</span>
+				<strong>模块化后台管理模板</strong>
+			</div>
+		</div>
+
+		<nav class="side-menu content mCustomScrollbar" data-mcs-theme="minimal-dark">
+
+			<ul>
+
+
+				<li>
+					<dl>
+						<dt>
+							<i class="icon-table"></i>会员模块<i class="icon-angle-right"></i>
+						</dt>
+						<dd>
+							<a href="index.php?p=Admin&c=User&a=index">会员管理</a>
+						</dd><dd>
+						<a href="index.php?p=Admin&c=User&a=add">添加会员</a>
+					</dd>
+						<dd>
+							<a href="table.html">会员充值</a>
+						</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>
+							<i class="icon-list-alt"></i>表单UI<i class="icon-angle-right"></i>
+						</dt>
+						<dd>
+							<a href="form.html">表单结构样式</a>
+						</dd>
+					</dl>
+				</li>
+			</ul>
+		</nav>
+
+		<footer class="side-footer">© DeathGhost 版权所有</footer>
+
+	</div>
+	<div class="content-wrap">
+		<header class="top-hd">
+			<div class="hd-lt">
+				<a class="icon-reorder"></a>
+			</div>
+			<div class="hd-rt">
+				<ul>
+					<li>
+						<a href="#" target="_blank"><i class="icon-home"></i>前台访问</a>
+					</li>
+					<li>
+						<a><i class="icon-random"></i>清除缓存</a>
+					</li>
+					<li>
+						<a><i class="icon-user"></i>管理员:<em>DeathGhost</em></a>
+					</li>
+					<li>
+						<a><i class="icon-bell-alt"></i>系统消息</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="JsSignOut"><i class="icon-signout"></i>安全退出</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<main class="main-cont content mCustomScrollbar">
+			<div class="page-wrap">
+				<!--开始::内容-->
+				<section class="page-hd">
+					<header>
+						<h2 class="title">会员管理</h2>
+						<p class="title-description">
+
+						<div class="fr input-group">
+						<form action="index.php?P=Admin&c=User&a=index">
+							<input type="text" class="form-control" placeholder="搜索..." style="width:290px;" name="keyword"/>
+						</form>
+							<button class="btn btn-secondary-outline">搜索</button>
+						</div>
+
+						</p>
+					</header>
+					<hr>
+				</section>
+
+
+				<table class="table table-bordered  mb-15">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>用户名</th>
+							<th>头像</th>
+							<th>密码</th>
+							<th>真实姓名</th>
+							<th>性别</th>
+							<th>手机号码</th>
+							<th>余额</th>
+							<th>是否vip</th>
+							<th>备注</th>
+							<th>操作</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+
+					<?php foreach($rows as $val):?>
+						<tr class="cen">
+							<td><?=$val['user_id']?></td>
+							<td><?=$val['username']?></td>
+							<td><img src="<?=$val['photo']?>" alt=""></td>
+							<td><?=$val['password']?></td>
+							<td><?=$val['realname']?></td>
+							<td><?=$val['sex']>0?'女':'男'?></td>
+							<td><?=$val['telephone']?></td>
+							<td><?=$val['money']?></td>
+							<td><?=$val['is_vip']>1?'√':'×'?></td>
+							<td><?=$val['remark']?></td>
+							<td>
+								<a title="编辑" class="mr-5" href="index.php?p=Admin&c=User&a=edit&id=<?=$val['user_id']?>">编辑</a>
+								<a title="充值" class="mr-5" href="index.php?p=Admin&c=User&a=getmoney&id=<?=$val['user_id']?>">充值</a>
+								<a title="充值" class="mr-5" href="index.php?p=Admin&c=User&a=pay&id=<?=$val['user_id']?>">消费</a>
+								<a title="删除" href="index.php?p=Admin&c=User&a=delete&id=<?=$val['user_id']?>">删除</a>
+							</td>
+						</tr>
+					<?php endforeach;?>
+					</tbody>
+				</table>
+<!--分页-->
+				<?=$page_html?>
+				<!--开始::结束-->
+			</div>
+		</main>
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+			</p>
+		</footer>
+	</div>
+</div>
+
+</body>
+</html>

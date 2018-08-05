@@ -1,0 +1,46 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/6/2 0002
+ * Time: 下午 3:23
+ */
+
+namespace Application\Controller\Home;
+
+
+use Application\Model\ArticModel;
+use Framework\Controller;
+
+class ArticController extends  Controller
+{
+    private $model;
+
+    public function __construct()
+    {
+        $this->model=new ArticModel();
+    }
+    public function index(){
+        //根据有效时间查询有效活动
+        @session_start();
+        $result=$this->model->index();
+        @session_start();
+        //分配值
+        $this->assign('user',$result);
+        //加载页面
+        $this->display('index');
+
+    }
+    public function articlist(){
+        $this->display('articlist');
+    }
+    //根据id查询活动详情
+    public  function  content(){
+        $id=$_GET['id'];
+        $c= $this->model->content($id);
+        //将至分配给视图
+        $this->assign('c',$c);
+        //加载视图
+        $this->display('content');
+    }
+}

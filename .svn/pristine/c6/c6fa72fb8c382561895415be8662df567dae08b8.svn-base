@@ -1,0 +1,341 @@
+.calculatorLink .icon, .financialData dt .icon, .productHead .investInfo .footInfo .CalLink, .productHead .investInfo .footInfo .CalLinkInvest, .productContent .investList .reward .icon,
+.productContent .investList .reward .titleIcon, .productContent .investList .investListTable .a i, .productHead .productInfo h4 .icon, .productList .product .repay .icon, 
+.productList .product .over .icon, .productContent .productIntro .productSafe i, #hqbInfo .green .zhitou i, .tzAlertForm .rList i { background: url(../src/shop.png) no-repeat;}
+
+
+/*排序区域*/
+.productSort { margin-top: 10px;}
+.productSort dl { position: relative; z-index: 100; border: 1px solid #e3e3e3;}
+.productSort dt { padding: 0 30px; width: 240px; height: 52px; line-height: 52px; font-size: 18px; color: #666; font-weight: bold;}
+.productSortType { padding: 10px 20px;}
+.productSortType .sortLi { position: relative; z-index: 100; float: left; display: inline; margin-right: 10px; }
+.productSortType a { position: relative; display: block; height: 30px; line-height: 30px; text-decoration: none; text-indent: 10px;}
+.productSortType .typeLink { padding-right: 30px; min-width: 70px; background-color: #f7f7f7; border: 1px solid #e3e3e3; color: #666;}
+.productSortType .sortLi i { position: absolute; top: 8px; right: 10px; width: 12px; height: 13px; background-position: -110px -20px;}
+.productSortType .singleLi i { display: none;}
+.productSortType .singleLi a { padding-right: 10px; min-width: auto;}
+.productSortType .currT i { display: block; background-position: -130px -17px;}
+.productSortType .currB i { display: block; background-position: -130px 0;}
+.productSortType .singleLi .currT, .productSortType .singleLi .currB { padding-right: 30px;}
+.productSortType .childNav { position: absolute; top: 0; left: 0; display: none; min-width: 100px; background-color: #fff; border: 1px solid #e3e3e3;}
+.productSortType .childNav a:hover { background-color: #18cca0; color: #fff;}
+.productSortType .payMethod { width: 150px;}
+
+.productSortType .curr .childNav { display: block;}
+
+
+
+/* 项目列表 左侧辅助信息样式 */
+.column dt { position: relative; padding: 0 30px; height: 50px; line-height: 50px; font-size: 18px; font-weight: bold; color: #666;}
+.column dd { padding: 10px 30px 20px 30px;}
+
+
+/*分类列表 －－－*/
+.productType { border-top: 0 none;}
+.productType .typeMenu { padding: 10px 0 20px;}
+.productType .typeMenu a { display: block; padding: 0 30px; font-size: 14px; color: #666; text-decoration: none;}
+.productType .typeMenu span { position: relative; display: block; height: 40px; line-height: 40px; }
+.productType .typeMenu .icon { position: absolute; top: 15px; right: 5px; width: 8px; height: 12px; background-position: -80px -18px;}
+.productType .typeMenu a:hover { background-color: #f2f2f2;}
+.productType .typeMenu .curr { color: #18cca0;}
+.productType .typeMenu .curr .icon { background-position: -80px -31px;}
+.productType .typeMenu a.noBorder span { border: none 0;}
+
+/*分类列表 －－－优选理财*/
+.productType .typeMenu_yx { padding: 10px 0 20px;}
+.productType .typeMenu_yx dt { margin: 0 30px; padding: 0; height: 30px; line-height: 30px; box-shadow: none; border-bottom: 1px solid #e3e3e3; font-weight: bold; font-size: 14px;}
+.productType .typeMenu_yx dt .more { margin-top: 2px; font-weight: normal; font-size: 12px; text-decoration: none;}
+.productType .typeMenu_yx dd { margin: 5px 0 10px 30px; padding: 0; width: 270px; font-size: 12px;}
+.productType .typeMenu_yx dd a { float: left; display: inline; margin-right: 10px; width: 50px; line-height: 20px; text-decoration: none;}
+.productType .typeMenu_yx dt .curr, .productType .typeMenu_yx dd .curr { color: #18cca0;}
+.productType .typeMenu_yx .noBorder { border: none 0;}
+
+
+.financialData dt { color: #fff;}
+.financialData dt .icon { position: absolute; top: 0; right: 198px; width: 100px; height: 85px;}
+.financialData li { line-height: 30px;}
+.financialData li em { font-size: 14px; color: #fa5e3e;}
+
+
+.calculatorLink a { display: block; padding: 15px 20px; background-color: #73aefa;}
+.calculatorLink .icon { margin-right: 20px; width: 70px; height: 100px; background-position: -128px 0;}
+.calculatorLink .detail { width: 168px;}
+.calculatorLink .detail span { display: block;}
+.calculatorLink .title { line-height: 36px; font-size: 18px; color: #1c5bab; font-weight: bold;}
+.calculatorLink .text { font-size: 14px; color: #fff;}
+.calculatorLink .link { float: right; display: inline; margin-top: 12px; padding: 0 15px; height: 30px; line-height: 30px; background-color: #1c5bab; border-radius: 50px; color: #fff; }
+
+.questionList dt { margin: 0 30px 0 20px; padding: 0 0 0 10px; border-bottom: 1px solid #e3e3e3;}
+.questionList dt a { position: absolute; top: 4px; right: 0; font-size: 14px; font-weight: normal;}
+.questionList dd a { position: relative; display: block; line-height: 30px; text-decoration: none;}
+.questionList .icon { position: absolute; top: 8px; right: 0; width: 38px; height: 13px; background-position: -150px 0;}
+.questionList .new { background-position: -200px 0;}
+
+
+/*项目信息列表 区块*/
+.productList .product { padding-top: 10px;}
+.productList .product dl { position: relative; padding: 30px 0 20px 30px; font-size: 14px; border: 2px solid #fff;}
+.productList .product .curr { border: 2px solid #fa5e3e;}
+.productList .product dt { position: absolute; z-index: 10; top: 20px; left: -2px; width: 100%; line-height: 22px; color: #fff;}
+.productList .product dt .pName { padding: 0 15px 0 30px; background-color: #fa5e3e; }
+.productList .product dt .onlineTime { margin-left: 10px; }
+.productList .product dt .typeIcon { float: left; display: inline; margin: 3px 0 0 10px; height: 18px;}
+.productList .product dt .pType { margin: 3px 0 0 10px; padding: 0 5px; line-height: 18px;}
+.productList .product dt .pNotice { margin: 3px 0 0 2px; line-height: 18px;}
+.productList .product dt .pRedeemType { position: absolute; top: 2px; left: 510px;}
+.productList .product dt a { color: #fff; text-decoration: none;}
+.productList .product dt a:hover { font-size: 15px;}
+.productList .product .moreInfo { position: absolute; top: 0; right: 0;}
+.productList .product dd { position: relative;}
+.productList .product .rate { position: relative;}
+.productList .product .rate span { position: relative; font-size: 20px;}
+.productList .product .rate em { font-size: 28px; font-weight: bold;}
+.productList .product .rate .rateNotice { text-align: center;}
+.productList .product .rate3 { padding: 13px 5px 0;}
+.productList .product .rate .rateAdd { position: absolute; top: -10px; right: -24px; font-size: 12px; }
+.productList .product .date span { font-size: 18px;}
+.productList .product .date em { font-size: 24px; font-weight: bold;}
+.productList .product .link a { float: left; display: inline; margin: 8px 0 0 0; width: 100px; height: 38px; line-height: 38px; border: #999 1px solid; border-radius: 3px; text-decoration: none; text-align: center; color: #333;}
+.productList .product .link a:hover { background-color: #fa5e3e; border-color: #fa5e3e; color: #fff; }
+.productList .product .link .view .listCountDown { float: left; display: inline; margin: 8px 0 0 0; padding: 0 5px; min-width: 90px; height: 38px; line-height: 38px; border-radius: 3px; border: 1px solid #478fed; color: #478fed; text-align: center;}
+.productList .product .w1 { padding-top: 30px; width: 260px;}
+.productList .product .w2 { padding-top: 10px; width: 250px;}
+.productList .product .w3 { padding-top: 15px; width: 155px;}
+.productList .product .w3 .noDate { padding-top: 10px; font-size: 20px;}
+.productList .product .over .view, .productList .product .repay .view { padding-top: 10px; }
+.productList .product .repay .icon, .productList .product .over .icon { position: absolute; top: -19px; right: 13px; width: 80px; height: 80px; background-position: -360px -113px;}
+.productList .product .over .icon { background-position: -256px -113px;}
+
+.productList .youxuan .curr { border: 2px solid #18cca0;}
+.productList .youxuan dl { padding: 20px 0 10px 30px;}
+.productList .youxuan dt .pName { margin: 0 0 0 30px; padding: 0; background-color: #fff; color: #333;}
+.productList .youxuan .amount em { font-size: 18px; font-weight: bold;}
+.productList .youxuan .rate span, .productList .youxuan .date span, .productList .youxuanZR .discount span { font-size: 14px;}
+.productList .youxuan .rate em, .productList .youxuan .date em, .productList .youxuanZR .discount em { font-size: 24px; font-weight: bold;}
+.productList .youxuan .w1 { width: 185px;}
+.productList .youxuan .w2 { padding-top: 25px; width: 290px;}
+.productList .youxuan .w3 { padding-top: 25px; width: 210px;}
+.productList .youxuan .w3 .noDate { padding-top: 5px;}
+.productList .youxuan .link a:hover { background-color: #18cca0; border-color: #18cca0; color: #fff; }
+.productList .youxuan .repay .icon, .productList .youxuan .over .icon { top: -12px;}
+.productList .youxuan .zg .w2 { width: 320px;}
+.productList .youxuan .zg .w3 { width: 150px;}
+.productList .youxuan .zg .f1 { vertical-align: 4px;}
+.productList .youxuan .zg .f2 { position: absolute; top: -10px; right: -24px; line-height: 15px; font-size: 12px;}
+
+.productList .ziguanZR .w3 { width: 85px;}
+.productList .ziguanZR .w3 .noDate { padding-top: 10px; font-size: 20px;}
+.productList .ziguanZR .w4 { padding-top: 15px; width: 85px;}
+
+.productList .youxuanZR .w2 { width: 260px;}
+.productList .youxuanZR .w3 { width: 130px;}
+.productList .youxuanZR .w4 { padding-top: 25px; width: 130px;}
+.productList .youxuanZR .zg .w1 { width: 185px;}
+.productList .youxuanZR .zg .w2 { width: 290px;}
+.productList .youxuanZR .zg .w3 { width: 120px;}
+.productList .youxuanZR .zg .w4 { width: 110px;}
+
+.productList .product .noList { padding-top: 50px; height: 20px; line-height: 20px; text-align: center;}
+.productList .product i { display: inline-block; margin-right: 5px; width: 17px; height: 17px; background-position: -92px -15px; vertical-align: -4px;}
+
+
+
+
+/* 项目详情页样式 */
+/* 项目详情头部内容样式 */
+.productDetail { margin-top: 20px;}
+.productHead { position: relative;}
+.productHead .productInfo { padding: 20px 30px 20px 50px; width: 640px;}
+.productHead .productInfo h4 { position: relative; padding: 20px 0 30px; font-size: 18px; }
+.productHead .productInfo h4 span { position: relative;}
+.productHead .productInfo h4 .typeIcon { display: inline-block; height: 20px; vertical-align: -4px;}
+.productHead .productInfo h4 .icon { position: absolute; top: 20px; right: 20px; width: 100px; height: 100px; background-position: -280px 0;}
+.productHead .productInfo h4 .new { background-position: -503px 0;}
+.productHead .productInfo h4 .fuli { background-position: -390px 0;}
+.productHead .productInfo h4 .zr { background-position: -136px -113px;}
+.productHead .productInfo h4 .vip { background-position: -675px 0;}
+.productHead .productInfo h4 .grade { background-position: -515px -113px;}
+.productHead .productInfo h4 .qbzt { background-position: -800px 10px;}
+.productHead .productInfo h4 .szn { background-position: -900px 10px;}
+.productHead .productInfo .zrNotice { margin-left: 5px; padding: 3px 5px; border: 1px solid #18cca0; border-radius: 3px; font-size: 12px; font-weight: normal; vertical-align: 2px;}
+.productHead .investInfo .zrNotice { display: inline-block;float: right;font-size: 14px; font-weight: normal; vertical-align: 2px;}
+.productHead .productInfo .middleInfo { color: #666; text-align: center;}
+.productHead .productInfo .middleInfo .add { font-size: 40px;}
+.productHead .productInfo .middleInfo em { line-height: 60px; font-size: 60px;}
+.productHead .productInfo .middleInfo .notice { display: block; font-size: 18px;}
+.productHead .productInfo .middleInfo .rate { width: 280px; font-size: 40px;}
+.productHead .productInfo .middleInfo .date { width: 260px; font-size: 30px;}
+.productHead .productInfo .middleInfo .overDate { line-height: 65px;}
+/* 浮动收益区域的样式 */
+.productFD .productInfo .rate2, .productHead .productInfo .rate3 { font-size: 40px;}
+.productFD .productInfo .rate2 { margin-top: 2px;}
+.productFD .productInfo .rate2 em { font-size: 50px;}
+.productFD .productInfo .f1 { margin: 0 20px; font-size: 40px;}
+.productFD .productInfo .rate3 span { position: relative; z-index: 100;}
+.productFD .productInfo .rate3 .f2 { position: absolute; top: -20px; right: -30px; font-size: 16px;}
+.productFD .productInfo .helpTip .helpDetail { position: absolute; left: -168px;}
+
+
+.productHead .productInfo .footInfo { margin: 30px 0 10px; width: 480px; font-size: 16px;}
+.productHead .productInfo .footInfo p { margin: 10px 0; padding: 5px 1em; border: 1px dashed #666; font-size: 12px;}
+.productHead .productInfo .footInfo .info { position: relative; margin-left: 20px;}
+.productHead .productInfo .footInfo .leftInfo { width: 300px;}
+.productHead .productInfo .footInfo .pgLine { position: relative; display: inline-block; margin-right: 5px; width: 100px; height: 18px; background-color: #f2f2f2; border-radius: 5px; overflow: hidden; vertical-align: -3px;}
+.productHead .productInfo .footInfo .pgLine span { position: absolute; top: 0; left: 0; width: 0; height: 100%; border-radius: 5px;}
+.productHead .productInfo .footInfo .rightInfo span { margin-left: 20px;}
+.productHead .productInfo .footNew { margin-top: 20px;}
+.productHead .productInfo .footBK { margin-top: 20px;}
+
+
+.productHead .investInfo { position: absolute; top: 7%; right: 30px; width: 450px; height: 86%; background-color: #f7f7f7;}
+.productHead .investInfo .investContent { padding: 20px 30px 0; line-height: 30px; font-size: 14px;}
+.productHead .investInfo .investContent .title { margin-bottom: 5px; line-height: 40px; border-bottom: 1px solid #e3e3e3; font-size: 18px; font-weight: bold;}
+.productHead .investInfo .investContent .leftInfo, .productHead .investInfo .investContent .rightInfo { width: 50%;}
+.productHead .investInfo .investContent .leftInfo span { margin-left: 10px;}
+.productHead .investInfo .investContent .rightInfo { text-align: right;}
+.qbztHead .investInfo .investContent .leftInfo { width: 44%;}
+.qbztHead .investInfo .investContent .rightInfo { width: 56%;}
+
+
+/*转让区样式*/
+.productZr .productInfo h4 { padding-bottom: 35px;}
+.productZr .productInfo .footInfo { margin-top: 35px;}
+.productHead .investInfo .investContent .leftInfo .helpDetail { margin-left: 0;}
+.productHead .investInfo .investContent .zrRate span { margin-left: 3px;}
+
+.productHead .investInfo .investContent .rightInfo .helpDetail { left: -260px;}
+.productHead .investInfo .footInfo { position: absolute; bottom: 10px; left: 0; width: 100%;}
+.productHead .investInfo .footInfo .investBtn { padding: 10px 30px;}
+.productHead .investInfo .footInfo .link { width: 340px; height: 40px; line-height: 40px; color: #fff; text-align: center; border-radius: 3px; font-size: 16px; text-decoration: none;}
+.productHead .investInfo .footInfo .noGo { background-color: #d9d9d9;}
+.productHead .investInfo .footInfo .CalLink, .productHead .investInfo .footInfo .CalLinkInvest { width: 40px; height: 40px; background-position: -220px 0;}
+.productHead .investInfo .footInfo .agreeBtn { position: relative; text-indent: 30px;}
+.productHead .investInfo .footInfo .agreeBtn .icon { position: absolute; top: 2px; left: 8px; width: 14px; height: 14px; background-position: -150px -35px;}
+.productHead .investInfo .footInfo .agreeBtn .noCurr { background-position: -150px -15px;}
+
+
+/*项目详情页 项目内容*/
+.productContent { margin-top: 40px; background-color: #fff; border: 1px solid #e3e3e3; font-size: 14px;}
+.productNav { background-color: #f7f7f7;}
+.productNav li { float: left; display: inline; font-size: 16px;}
+.productNav a { display: block; padding: 0 50px; height: 46px; line-height: 42px; border-top: 4px solid #f7f7f7;}
+.productNav .curr a { background-color: #fff; border-top-color: #18cca0;}
+
+/*置顶的分类*/
+.fixedProductNav { position: fixed; _position: absolute; top: 0; left: 0; width: 100%; background-color: #f7f7f7;}
+.fixedProductNav .productNav { border-left: 1px solid #e3e3e3; border-right: 1px solid #e3e3e3;}
+.productInfo { padding: 50px 30px 50px 120px;}
+
+/*基金介绍*/
+.productContent  .fundTitle { margin: 50px 0 50px 0;}
+.productContent  .fundTitle .fundText { width: 490px;}
+.productContent  .fundTitle div { line-height: 30px;}
+.productContent  .funder { padding-top: 40px;}
+.productContent  .funder h4 { line-height: 36px; font-size: 16px;}
+.productContent  .funerList { margin-bottom: 70px;}
+.productContent  .funerList .funderImg { margin-top: 8px; margin-right: 40px;}
+.productContent  .funerList .funderImg img { width: 160px;}
+.productContent  .funerList .fundInfo { width: 840px; line-height: 20px; font-size: 12px;}
+.productContent  .funerList .fundInfo h4 { margin-right: 90px; margin-bottom: 10px; border-bottom: 1px solid #e3e3e3; font-weight: normal; font-size: 18px;}
+.productContent  .funerList .fundInfo p { margin-right: 150px;}
+.productContent  .funerList .fundHis { margin-top: 30px;}
+.productContent  .funerList .fundHis dl { margin-left: 30px; width: 350px;} 
+.productContent  .funerList .fundHis dt { font-size: 18px;}
+.productContent  .funerList .fundHis dd { margin-top: 20px;}
+
+
+
+/*项目详情*/
+.productContent .productIntro { padding-right: 90px;}
+.productContent .productIntro .introTitle { padding: 20px 30px; border: 1px solid #e3e3e3;margin-top: 0;}
+.productContent .productIntro .introTitle h4 { line-height: 36px; font-size: 18px;}
+.productContent .productIntro .introTitle li { float: left; display: inline; min-width: 30%; line-height: 30px; font-size: 16px;}
+.productContent .productIntro .productSafe { margin-top: 20px; border: 1px solid #e3e3e3;}
+.productContent .productIntro .productSafe h4 { padding-left: 20px; height: 50px; line-height: 50px; border-bottom: 1px solid #e3e3e3; font-size: 18px; font-weight: normal;}
+.productContent .productIntro .productSafe ul { padding: 20px 0 20px 25px;}
+.productContent .productIntro .productSafe li { float: left; display: inline; width: 100px; text-align: center;}
+.productContent .productIntro .productSafe i { display: block; margin: 0 auto 10px; width: 40px; height: 40px; background-position: 0 -250px;}
+.productContent .productIntro .productSafe .s2 i { background-position: -47px -250px;}
+.productContent .productIntro .productSafe .s3 i { background-position: -95px -250px;}
+.productContent .productIntro .productSafe .s4 i { background-position: -143px -250px;}
+.productContent .productIntro .productSafe .s5 i { background-position: -191px -250px;}
+.productContent .productIntro .productSafe .s6 i { background-position: -239px -250px;}
+.productContent .productIntro .productSafe .s7 i { background-position: -287px -250px;}
+.productContent .productIntro .productSafe .s8 i { background-position: -335px -250px;}
+.productContent .productIntro .productSafe .s9 i { background-position: -379px -250px;}
+
+.productContent .productIntro .productTable { margin-top: 20px;}
+.productContent .productIntro .productTable table { border-collapse: collapse; width: 100%;}
+.productContent .productIntro .productTable caption { padding-left: 30px; line-height: 50px; border: 1px solid #e3e3e3; border-bottom: 0 none; font-size: 18px; text-align: left;}
+.productContent .productIntro .productTable td { padding: 20px 40px 20px 70px; font-size: 12px;}
+.productContent .productIntro .productTable .ta { padding: 20px 30px; width: 170px; font-size: 14px;}
+.productContent .productIntro .productTable td { border: 1px solid #e3e3e3;}
+.productContent .productIntro .productTable ol { padding-left: 1em;}
+.productContent .productIntro .productTable li { list-style: decimal;}
+.productContent .productIntro .productTable .tc { padding-top: 40px; padding-bottom: 40px;}
+.productContent .productIntro .productTable .reviewImg { padding-right: 135px;}
+.productContent .productIntro .productTable .review { width: 615px;}
+.productContent .productIntro .productTable .review h4 { font-size: 18px;}
+
+/*投资纪录*/
+.productContent .investList { margin-right: 90px;}
+.productContent .investList .reward { position: relative; margin-bottom: 20px; padding: 40px 0 40px 170px; border: 1px solid #e3e3e3;}
+.productContent .investList .reward .rewardInfo { position: relative; padding-left: 50px;}
+.productContent .investList .reward .icon { position: absolute; top: -7px; left: 0; width: 30px; height: 30px; background-position: -624px 0;}
+.productContent .investList .reward .text { padding-left: 30px;}
+.productContent .investList .reward .rewardSG { margin-top: 20px;}
+.productContent .investList .reward .rewardSG .icon { background-position: -624px -36px;}
+.productContent .investList .reward .detailLink { position: absolute; top: 20px; right: 20px;}
+.productContent .investList .reward .titleIcon { position: absolute; top: -10px; left: -10px; width: 130px; height: 130px; background-position: 0 -112px;}
+.productContent .investList .investListTable table { border-collapse: collapse; width: 100%;}
+.productContent .investList .investListTable th, .productContent .investList .investListTable td { padding: 10px 0 10px 30px; height: 22px; line-height: 22px; border: 1px solid #e3e3e3; text-align: left; font-weight: normal;}
+.productContent .investList .investListTable .a { position: relative;}
+.productContent .investList .investListTable .a i { margin-left: 5px; display: inline-block; width: 15px; height: 22px; background-position: -220px -50px; vertical-align: -5px;}
+.productContent .investList .investListTable .nhq { margin-left: 5px; padding: 2px; border-radius: 5px; color: #fff; font-size: 12px;}
+
+/*项目图片内容*/
+.productContent .imgList { margin-right: 90px;}
+.productContent .imgList .title { margin-bottom: 20px; padding: 0 0 20px 10px; border-bottom: 1px solid #e3e3e3; font-size: 16px; font-weight: bold;}
+.productContent .imgList .title span { padding-left: 60px; font-weight: normal;}
+.productContent .imgList .list { text-align: center;}
+.productContent .imgList .list p { padding: 10px 0;}
+
+/*没有记录*/
+.productContent .productInfo .infoLi .noList { padding: 30px 0 30px 0; text-align: center; color: #999;}
+.productContent .productInfo .infoLi .noList i { display: inline-block; margin-right: 5px; width: 16px; height: 16px; background-position: -92px -15px; vertical-align: -3px; *vertical-align: -1px;}
+
+
+ 
+footer { margin-top: 100px;}
+
+
+.padding20{ padding:18px 25px;}
+.padding22{ padding:20px;}
+.padding30{ padding:30px 40px;}
+.margin{ margin:20px 35px;}
+
+
+
+.buyCart{
+
+    border: #999 1px solid;
+    text-align:center;
+    color: #333;
+    padding: 4px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-box-shadow: 0px 1px 3px #fff;
+    -moz-box-shadow: 0px 1px 3px #fff;
+    box-shadow: 0px 1px 3px #fff;
+    text-shadow: 1px 1px 3px #fff;
+    text-decoration: none;
+    outline: none;
+}
+.buyCart:hover{
+
+    background-color: #18cca0;
+    border-color:#18cca0;
+    color: #fff;
+}

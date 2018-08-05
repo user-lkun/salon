@@ -1,0 +1,32 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: asus
+ * Date: 2018/6/2
+ * Time: 23:41
+ */
+
+namespace Application\Model;
+
+
+use Framework\Model;
+
+class RankingModel extends Model
+{
+    public function rank(){
+        //求出充值排行前三的金额跟会员名
+        $sql="SELECT sum(amount) as sum from histories WHERE type=1 GROUP BY user_id ORDER BY sum desc limit 3";
+        $rechar = $this->db->fetchAll($sql);
+
+        foreach ($rechar as &$val){
+            $sql="SELECT sum(amount) as sum,user_id from histories WHERE type=1 GROUP BY user_id  HAVING sum='{$val['sum']}'";
+            $res = $this->db->fetchRow($sql);
+            $sql="select username from users WHERE user_id='{$res['user_id']}'";
+            $username = $this->db->fetchColumn($sql);
+            $val[].=$username;
+
+        }
+        return $rechar;
+
+    }
+}

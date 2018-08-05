@@ -1,0 +1,99 @@
+<div class="side-nav">
+    <div class="side-logo">
+        <div class="logo">
+				<span class="logo-ico">
+					<i class="i-l-1"></i>
+					<i class="i-l-2"></i>
+					<i class="i-l-3"></i>
+				</span>
+            <strong>美发后台管理系统</strong>
+        </div>
+    </div>
+
+    <nav class="side-menu content mCustomScrollbar" data-mcs-theme="minimal-dark">
+        <h2>
+            <a href="#" class="InitialPage"><i class="icon-dashboard"></i>数据概况</a>
+        </h2>
+        <ul>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>美发套餐管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=Plans&a=index">美发套餐列表</a>
+                    </dd>
+                    <dd>
+                        <a href="?p=Admin&c=Plans&a=add">添加套餐</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-columns"></i>代金券管理<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="?p=Admin&c=Daijinquan&a=index">代金券列表</a>
+                    </dd>
+                    <dd>
+                        <a href="?p=Admin&c=Daijinquan&a=add">添加代金券</a>
+                    </dd>
+                </dl>
+            </li>
+
+
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-spinner"></i>旋转动画<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="animation.html">刷新加载动画</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-fighter-jet"></i>面包屑导航<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="breadcrumb.html">面包屑</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-laptop"></i>文本面板<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="text-panel.html">文本面板</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-leaf"></i>块引用<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="blockquote.html">块引用</a>
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>
+                        <i class="icon-star"></i>第三方弹窗组件<i class="icon-angle-right"></i>
+                    </dt>
+                    <dd>
+                        <a href="layer.html">web弹层组件</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+    </nav>
+    <footer class="side-footer">© DeathGhost 版权所有</footer>
+</div>

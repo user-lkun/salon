@@ -1,0 +1,101 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: 35482
+ * Date: 2018/6/1
+ * Time: 19:32
+ */
+
+namespace Application\Controller\Admin;
+
+
+use Application\Model\UserModel;
+use Framework\Controller;
+use Framework\Tools\UploadTool;
+
+class UserController extends Controller
+{
+    //展示页面
+    public function index(){
+        $UserModel=new UserModel();
+        $Userlist=$UserModel->getall();
+        $this->assign('Userlist',$Userlist);
+        $this->display('index');
+    }
+    //修改
+    public function edit(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $data=$_POST;//普通数据
+            $photo=$_FILES['photo'];//传送数据
+            if($photo['error']!=4){
+                $uploadtool=new UploadTool() ;
+                //期望该方法上传成功返回图片地址,错误保存error信息
+                $photo_path=$uploadtool->upload($photo);
+                if($photo_path===false){
+                    //上传失败输出错误信息,跳转到添加页面
+                    echo"上传错误.{$uploadtool->geterror()}";
+                    header("refresh:2;index.php?act=add&cat=goods");
+                    exit;
+                }
+                //上传成功将图片 地址  保存到$data数据库中
+                $data['photo']=$photo_path;
+
+            }
+            $UserModel=new UserModel();
+            $Useradd=$UserModel->update($data);
+            if($Useradd===false){
+                $this->redirect('index.php?p=Admin&c=User&a=update',$UserModel->geterror(),1);
+            }
+
+            $this->redirect('index.php?p=Admin&c=User&a=index','修改成功',1);
+
+        }else{
+            $id=$_GET['id'];
+            $userModel=new userModel();
+            $editlist=$userModel->getone($id);
+            $this->assign('editlist',$editlist);
+            $this->display('edit');
+        }
+
+    }
+    //添加
+    public function add(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            $data=$_POST;//普通数据
+            $photo=$_FILES['photo'];//传送数据
+            if($photo['error']!=4){
+                $uploadtool=new UploadTool() ;
+                //期望该方法上传成功返回图片地址,错误保存error信息
+                $photo_path=$uploadtool->upload($photo);
+                if($photo_path===false){
+                    //上传失败输出错误信息,跳转到添加页面
+                    echo"上传错误.{$uploadtool->geterror()}";
+                    header("refresh:2;index.php?act=add&cat=goods");
+                    exit;
+                }
+                //上传成功将图片 地址  保存到$data数据库中
+                $data['photo']=$photo_path;
+
+            }
+            $UserModel=new UserModel();
+            $Useradd=$UserModel->register($data);
+            if($Useradd===false){
+                $this->redirect('index.php?p=Admin&c=User&a=add',$UserModel->geterror(),1);
+            }
+
+            $this->redirect('index.php?p=Admin&c=User&a=index','添加成功',1);
+
+        }else{
+            $this->display('add');
+        }
+
+    }
+    //删除
+    public function delete(){
+        $id=$_GET['id'];
+        $UserModel=new UserModel();
+        $UserModel->getout($id);
+        $this->redirect('index.php?p=Admin&c=User&a=index','删除成功',0.5);
+    }
+
+}

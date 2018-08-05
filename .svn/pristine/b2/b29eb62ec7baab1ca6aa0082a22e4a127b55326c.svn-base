@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>美发后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="Public/Admin/imagesicon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="Public/Admin/css/style.css" />
+<script src="Public/Admin/javascript/jquery.js"></script>
+<script src="Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="Public/Admin/javascrip/tplug-ins/layerUi/layer.js"></script>
+<script src="Public/Admin/editor/ueditor.config.js"></script>
+<script src="Public/Admin/editor/ueditor.all.js"></script>
+<script src="Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<div class="main-wrap">
+	<?php require "Application/View/Admin/left.html"?>
+	<div class="content-wrap">
+		<?php require "Application/View/Admin/header.html"?>
+		<!--<main class="main-cont content mCustomScrollbar">-->
+		</header>
+		<main class="main-cont content mCustomScrollbar">
+			<a href="?p=Admin&c=group&a=add">
+				<button class="btn btn-primary radius">添加部门</button>
+			</a>
+			<form action="index.php?p=Admin&c=Group&a=index" method="post">
+				<div class="fr input-group">
+					部门名称     <input type="text" class="form-control" placeholder="搜索..." style="width:290px;" name="name"/>
+					<button class="btn btn-secondary-outline">搜索</button>
+				</div>
+			</form>
+
+			<table class="table table-bordered  mb-15">
+				<thead>
+				<tr>
+					<th>部门id</th>
+					<th>部门名称</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<tbody>
+				<?php foreach($cc as $user):?>
+				<tr class="cen">
+					<td><?=$user['group_id']?></td>
+					<td><?=$user['name']?></td>
+					<td>
+						<a href="index.php?p=Admin&c=group&a=edit&id=<?=$user['group_id']?>" title="编辑" class="mr-5"><button class="btn btn-warning-outline">编辑</button></a>
+
+						<a href="index.php?p=Admin&c=group&a=delete&id=<?=$user['name']?>" title="删除"><button class="btn btn-danger-outline">删除</button></a>
+					</td>
+				</tr>
+				<?php endforeach;?>
+				</tbody>
+			</table>
+			<!--分页-->
+			<div  class="panel-bd">
+				<?php echo $a?>
+			</div>
+			<!--分页-->
+</div>
+</body>
+</html>

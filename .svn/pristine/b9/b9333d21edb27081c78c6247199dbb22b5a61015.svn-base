@@ -1,0 +1,20 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: asus
+ * Date: 2018/6/2
+ * Time: 9:47
+ */
+
+namespace Application\Controller\Admin;
+
+
+use Framework\Controller;
+
+class DiajinquanController extends Controller
+{
+    public function index(){
+        $this->display('index');
+
+    }
+}

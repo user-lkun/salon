@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hair Repair Website Template</title>
+    <link rel="stylesheet" href="./Public/Home/css/style.css" type="text/css">
+</head>
+<body>
+<div id="header">
+    <div>
+        <div id="logo">
+            <a href="index.html"><img src="./Public/Home/images/logo.png" alt="LOGO"></a>
+        </div>
+        <ul id="navigation">
+            <li class="selected">
+                <a href="#">首页</a>
+            </li>
+            <li>
+                <a href="index.php?p=Home&c=Order&a=add">预约美发</a>
+            </li>
+            <li>
+                <a href="?p=Home&c=Ranking&a=index">排行</a>
+            </li>
+            <li>
+                <a href="index.php?p=Home&c=Shop&a=shop">积分商城</a>
+            </li>
+            <li>
+                <?=isset($_SESSION['user']['username'])?
+               '<a href="index.php?p=Home&c=UserLogin&a=logout">退出登录</a>':
+                '<a href="index.php?p=Home&c=UserLogin&a=register">登录注册</a>'
+                ?>
+
+
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="contents">
+    <div id="adbox">
+        <div>
+            <img src="./Public/Home/images/beauty.png" alt="Img">
+            <div class="details">
+                <h3>We Bring out your beauty naturally...</h3>
+                <a href="index.php?p=Home&c=Artic&a=index">Set An Appointment Now</a>
+            </div>
+        </div>
+        <span class="footer"></span>
+    </div>
+    <div id="featured">
+        <a href="index.html" class="all-colors"></a> <a href="index.html" class="highlights"></a> <a href="index.html" class="coloring"></a>
+    </div>
+</div>
+<div id="footer">
+    <div id="articles">
+        <div class="header">
+            <div class="body">
+                <div>
+                    <table class="dingdan">
+                        <h3>
+                            <a href="?p=Home&c=Dingdan&a=getDingdan">我的订单</a>
+                         </h3>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <form action="index.html" method="post">
+            <input type="text" value="Enter email address and get 10% off" class="txtfield" onMouseUp="return false;" onFocus="this.select();">
+            <input type="submit" value="SIGNUP" class="btn">
+        </form>
+        <p>
+            &copy; Copyright &copy; 2013.Company name All rights reserved.<a target="_blank" href="://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+        </p>
+    </div>
+</div>
+<div style="display:none"><script src='://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>

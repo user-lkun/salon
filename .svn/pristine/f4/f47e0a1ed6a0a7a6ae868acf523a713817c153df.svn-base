@@ -1,0 +1,87 @@
+<?php
+
+namespace Application\Model;
+use Framework\Model;
+
+class PlansModel extends Model
+{
+    public function getList($conditions,$page){
+        $sql="select * from plans";
+        $where ='';//没传收索条件给一个空
+        if (!empty($conditions)){
+            $where =" where ".implode(' and ',$conditions);
+        }
+        //分页处理
+        //设置每页的显示条数  where xxx limit $start ,$leng;
+        $leng=5;
+        //获取总页数
+        //获取数据库中的总数据条数
+        $count=$this->db->fetchColumn("select count(*) from plans ".$where);//分页时需要将搜索的条件加上,
+        $totalPage=ceil($count/$leng);//总页数
+        //判断
+        $page=$page>$totalPage?$totalPage:$page;//页码不能大于总页数
+        $page=$page<1?1:$page;//页码不能小于1
+        $start = ($page - 1) * $leng;//起始页
+        $limit=" limit {$start},{$leng}";
+        $rows = $this->db->fetchAll("$sql.$where.$limit");
+        $all_msg['rows']=$rows;
+        //将分页信息保存在新数组中
+        $all_msg['page']=$page;
+        $all_msg['count']=$count;
+        $all_msg['leng']=$leng;
+        return $all_msg;
+    }
+    public function insert($data){
+        extract($data);
+        //1.判断套餐名不能为空
+        if ($name == null) {
+            $this->error = "套餐名称不能为空";
+            return false;
+        }
+        //2.判断套餐金额不能为空
+        if ($money == null) {
+            $this->error = "套餐金额不能为空";
+            return false;
+        }
+
+        $sql = "insert into plans set 
+name='{$name}',
+money='{$money}',
+status='{$status}',
+des='{$des}'";
+        $res = $this->db->execute($sql);
+        return $res;
+    }
+    public function getOne($plan_id){
+        $sql="select * from plans WHERE plan_id='{$plan_id}'";
+        $res = $this->db->fetchRow($sql);
+        return $res;
+    }
+    public function update($data){
+        extract($data);
+        //1.判断套餐名不能为空
+        if ($name == null) {
+            $this->error = "套餐名称不能为空";
+            return false;
+        }
+        //2.判断套餐金额不能为空
+        if ($money == null) {
+            $this->error = "套餐金额不能为空";
+            return false;
+        }
+
+        $sql = "update plans set 
+name='{$name}',
+money='{$money}',
+status='{$status}',
+des='{$des}'
+WHERE plan_id='{$plan_id}'";
+        $res = $this->db->execute($sql);
+        return $res;
+    }
+    public function delete($plan_id){
+        $sql="delete from plans WHERE plan_id='{$plan_id}'";
+        $res = $this->db->execute($sql);
+        return $res;
+    }
+}

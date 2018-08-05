@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>网站设置</title>
+	<link href="./Public/Admin/denglu/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./Public/Admin/denglu/css/rightmain.css">
+
+</head>
+<body>
+		
+
+       <div class="iframecontent">
+            <div class="list">
+                <div class="itabcontent" id="itabcontent">
+<form action="index.php?p=Home&c=Order&a=add" enctype="multipart/form-data" method="post">
+                    <!--站点配置开始-->
+                    <div class="itabcontentlist zdpz">
+                        <dl class="clearfix">
+                            <dt>真实姓名：</dt>
+                            <dd>
+                                <input type="text" id="" name="realname"  >
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>预约电话：</dt>
+                            <dd>
+                                <input type="number" id="" name="phone" >
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>预约日期：</dt>
+                            <dd>
+                                <input type="date" id="" name="date" >
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>选择套餐：</dt>
+                            <dd>
+                                <select name="barber">
+                                    <?php  foreach ($a as $v):?>
+                                    <option value="1"><?=$v['name']?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>预约美发师：</dt>
+                            <dd>
+                                <select name="barber">
+                                    <?php  foreach ($c as $v):?>
+                                    <option value="<?=$v['username']?>"><?=$v['username']?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </dd>
+                        </dl>
+                        <dl class="clearfix">
+                            <dt>  备注：</dt>
+                            <dd>
+                                <textarea placeholder="请输入内容" id="desc" name="content"></textarea>
+                            </dd>
+                        </dl>
+
+                        <dl class="clearfix">
+                            <dt class="surebtn">保存按钮：</dt>
+                            <dd>
+                                <input type="submit">
+                            </dd>
+                        </dl>
+
+                    </div>
+</form>
+
+                </div>
+            </div>
+
+        </div>
+  </body>
+</html>

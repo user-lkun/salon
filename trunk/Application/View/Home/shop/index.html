@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="author" content="order by dede58.com"/><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="renderer" content="webkit">
+<link href="./Public/Home/shop/unpan/blue/css/style.css" rel="stylesheet" type="text/css">
+<link href="./Public/Home/shop/unpan/blue/css/shop.css" rel="stylesheet" type="text/css">
+<link href="./Public/Home/shop/unpan/blue/css/introjs.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="unpan/dist/js/jquery.min.js"></script>
+<link href="./Public/Home/shop/unpan/blue/css/dialog.css" rel="stylesheet" type="text/css">
+<link href="./Public/Home/shop/unpan/blue/css/jquery.mloading.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="./Public/Home/shop/unpan/blue/js/dialog.min.js"></script>
+<script type="text/javascript" src="./Public/Home/shop/unpan/blue/js/jquery.mloading.js"></script>
+<title>深蓝时代 | 积分商城</title>
+</head>
+<body style="position: static;">
+<!--[if IE]>
+<script src="./Public/Home/shop/unpan/blue/js/html5shiv.js"></script>
+<![endif] -->
+<!-- top 部分 start-->
+<section class="top" id="topSection">
+<div class="layout clearfix">
+	<ul class="fl topL">
+		<li class="weixin">
+		<a href="?p=Home&c=Index&a=index">
+                    返回首页
+		<span class="icon"></span>
+		<img class="disNone" src="./Public/Home/shop/unpan/blue/src/code.jpg" alt="深蓝积分">
+		</a>
+		</li>
+		<li class="cusmer">
+		<a href="#">
+                    咨询客服
+		<span class="icon"></span>
+		</a>
+		<div class="cusmerQList disNone">
+			<div class="clearfix cusmerQFoot bgGreen">
+				<span class="fl fcWhite">工作日 9:00-18:00</span>
+				<a class="fr" href="#" target="_blank">在线咨询</a>
+			</div>
+		</div>
+		</li>
+	</ul>
+</div>
+</section>
+
+<div class="layout clearfix">
+
+	<!-- 用户已登录的显示信息 -->
+
+</div>
+</header>
+<section>
+<div class="layout clearfix">
+	<div class="productSort">
+		<dl class="clearfix layout bgWhite shadow">
+			<dt class="fl">积分商城</dt>
+			<dd class="fr">
+			</ul>
+			</dd>
+		</dl>
+	</div>
+	<!-- 排序区 end -->
+	<!-- 左侧辅助信息 start -->
+	<aside class="fl column">
+	<dl class="financialData shadow mb20" style="margin-top: 10px;">
+		<dt class="bgGreen"><i class="icon"></i></dt>
+		<dd class="bgWhite" data-step="1" data-intro="购买产品只能使用下列的积分" data-position='top'>
+		<ul><li>欢迎用户 <em><?=$b ?></em>
+			<li>电子积分 <em><?=$d?></em> 元</li>
+		</ul>
+		</dd>
+	</dl>
+
+	<!-- 常见问题 end -->
+	</aside>
+	<!-- 左侧辅助信息 end --><article class="fr sidebar productList fc666">
+
+	<div class="product youxuan ">
+		<?php foreach($cc as $c) :?>
+		<div class="bgWhite shadow mb10" style="width: 33%;height: 350px;float: left">
+			<div>
+				<a href="#">
+				<img src="<?=$c['img']?>" style="width:280px;height:280px;padding:5px 0px;display: block;margin: auto;" alt="">
+				</a>
+			</div>
+			<div style="padding: 2px 5px">
+				<p>
+					<?=$c['name']?>
+				</p>
+			</div>
+			<div class="fl" style="padding: 6px 5px">
+				<p>
+					需要积分<?=$c['number']?>
+				</p>
+			</div>
+			<div class="fl" style="padding: 6px 10px">
+				<p>
+					剩余库存<?=$c['kucun']?>
+				</p>
+			</div>
+			<div class="fr" style="padding: 2px 5px">
+				<button type="button" class="buyCart" onclick="addCart('5')"><a href="index.php?p=Home&c=Shop&a=jifen&jifen=<?=$c['number']?>&brand=<?=$c['name']?>&kucun=<?=$c['kucun']?>">点击兑换</a></button>
+			</div>
+		</div>
+
+		<?php endforeach ?>
+		</div>
+
+
+	<div class="bgWhite shadow mb10" style="width: 30px;height: 35px;" >
+		<?php echo $a?>
+	</div>
+
+</div>
+</section>
+
+<!--[if IE 6]>
+<script src="./Public/Home/shop/unpan/bule/js/png24.js"></script>
+<script>
+    DD_belatedPNG.fix('*');
+</script>
+<![endif]-->
+
+
+</section>
+</footer>
+</body>
+</html>

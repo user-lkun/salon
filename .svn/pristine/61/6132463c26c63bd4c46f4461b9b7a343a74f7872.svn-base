@@ -1,0 +1,42 @@
+<?php
+namespace Application\Controller\Admin;
+use Application\Model\DengluModel;
+use Framework\Controller;
+
+class DengluController extends  Controller
+{//保存model的实现对象
+    private  $model;
+    public function  __construct()
+    {$this->model=new DengluModel();
+    }
+    //显示登录界面
+    public  function index(){
+        $this->display('index');
+    }
+
+    //验证登录
+public  function  yanzheng(){
+        //接收传递过来的信息
+    $data=$_POST;
+    //调用方法验证
+    $c=$this->model->yanzheng($data);
+if ($c===false){
+    $this->redirect('index.php?p=Admin&c=Denglu&a=index','登录失败'.$this->model->getError(),3);
+}
+//成功返回首页
+    //加载首页
+    $this->redirect('index.php?p=Admin&c=Index&a=index','登录成功',3);
+
+
+}
+    //清除缓存并退出
+    public  function  huancun(){
+       //调用模型
+        $this->model->huancun();
+        //执行完毕,跳转到登录界面
+        $this->redirect('index.php?p=Admin&c=Denglu&a=index','清除数据成功',2);
+}
+
+
+
+}

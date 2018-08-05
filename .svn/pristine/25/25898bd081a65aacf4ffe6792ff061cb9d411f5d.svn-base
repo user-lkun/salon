@@ -1,0 +1,30 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: asus
+ * Date: 2018/6/4
+ * Time: 10:59
+ */
+
+namespace Application\Controller\Home;
+
+
+use Application\Model\DingdanModel;
+use Framework\Controller;
+
+class DingdanController extends Controller
+{
+    public function getDingdan(){
+        @session_start();
+        if (!empty($_SESSION['user'])){
+            $dingdan = new DingdanModel();
+            $rows = $dingdan->getuserDingdan();
+            $this->assign('rows',$rows);
+            $this->display('index');
+        }else{
+            $this->redirect("?p=Home&c=Index&a=index",'',0);
+        }
+
+
+    }
+}

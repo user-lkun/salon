@@ -1,0 +1,179 @@
+<?php
+
+
+namespace Application\Model;
+
+use Framework\Model;
+class MemberModel extends Model
+{
+
+//查询员工表
+ public function index($tiaojian = [], $page)
+{
+    $where = '';
+    //接收条件,根据条件判定implode将一个数组拼接成字符串
+    if (!empty($tiaojian)) {
+        $where = " where " . implode(' or ', $tiaojian);
+    }
+    //设定每页的查询条数
+    $pagesize = 4;
+    //查询总的条数
+    $count = $this->db->fetchColumn("select count(*)  from  `members`  {$where}");
+    //查询总的总页数,向上取整
+    $zongyeshu = ceil($count / $pagesize);
+    //dump($zongyeshu);exit();
+    $page = $page > $zongyeshu ? $zongyeshu : $page;
+//需要球开始页(当前页-1)乘以每页条数
+    //当前页不能小于1,不能大于总页数
+    $page = $page < 1 ? 1 : $page;
+    $start = ($page - 1) * $pagesize;
+    $limit = " limit $start,$pagesize";
+    //>>1.准备sql
+    $sql = "select * from `members` " . $where . $limit;
+    //dump($sql);
+    //>>2.执行sql
+    $result = $this->db->fetchAll($sql);
+    //需要将值全部返回出去
+    return array('result' => $result, 'page' => $page, 'pagesize' => $pagesize, 'count' => $count, 'zongyeshu' => $zongyeshu);
+}
+//添加员工表
+public  function  add($data)
+{
+    //判断输入的用户名是否为空
+    if (empty($data['username'])) {
+        //保存错误信息
+        $this->error = "用户名为空";
+        return false;
+    }
+
+    if (empty($data['group_id'])) {
+        //保存错误信息
+        $this->error = "所在部门id为空!";
+        return false;
+    }
+    if (is_int($data['telephone'])) {
+        //保存错误信息
+        $this->error = "电话号码必须为数字";
+        return false;
+    }
+//判断密码不能空,并且密码不小于6位
+    if (empty($data['password'])||strlen($data['password'])<6){
+        //保存错误信息
+        $this->error= "密码不能空,并且密码不小于6位";
+        return false;
+    }
+
+    //判断密码和重复密码是否一致
+    if ($data['password'] != $data['repassword']) {
+        return false;
+
+    }
+    //密码加密
+    $password = md5($data['password']);
+    //添加时间
+    $last_login_time = time();
+    //>>1.准备sql
+    $sql = "insert into `members`(username,password,telephone,last_login_time,photo,group_id) VALUES (
+'{$data['username']}',
+'{$password}',
+'{$data['telephone']}',
+'{$last_login_time}',
+'{$data['logo']}',
+'{$data['group_id']}'
+)";
+    //>>2.执行sql并返回结果
+    return $result= $this->db->execute($sql);
+}
+//根据传入的id,查询
+public  function  getone($id){
+    $sql = "select *from `members` where members_id={$id}";
+    //执行sql并返回值
+    $result = $this->db->fetchRow($sql);
+    //返回值
+    return $result;
+
+}
+//修改保存
+    public function edit($data)
+    {
+        //1.判断用户名不能为空
+        if (empty($data['username'])) {
+            //保存错误信息
+            $this->error = "用户名为空!";
+            return false;
+        }
+        if (empty($data['group_id'])) {
+            //保存错误信息
+            $this->error = "所在部门id为空!";
+            return false;
+        }
+        if (is_int($data['telephone'])) {
+            //保存错误信息
+            $this->error = "电话号码必须为数字";
+            return false;
+        }
+        //3.*旧密码是否填写
+        //填写 --->
+        //        2.新密码不能空
+        //        3.确认密码和新密码一致
+        //        1.旧密码必须和数据库一致 查数据库
+        //        4.新密码不能和旧密码一致
+        //    不填写
+        //        不修改密码,只修改用户名和邮箱*/
+        //3.1如果旧密码(这里手输)为空,代表不修改密码,这个时候只用修改用户名和邮
+        $sql = "update `members` set 
+username='{$data['username']}',
+group_id='{$data['group_id']}',
+telephone='{$data['telephone']}'";
+
+        if (!empty($data['oldpassword'])) {//原密码不为空的时候,先比对数据库中的密码和手输是否相等
+            //>>1.准备sql语句,查询数据库中的密码
+            $sql_password = "select password from `members` WHERE members_id={$data['id']}";//加密了
+            $db_password = $this->db->fetchColumn($sql_password);
+            //手动输入旧密码是没有加密, 数据库中的是加密后的
+            $old_password = md5($data['oldpassword']);//这里的旧密码是h`tml中手动输入的并不是查询的值;
+            if ($db_password != $old_password) {
+                $this->error = "旧密码错误!";
+                return false;
+            }
+            //旧密码正确时判断新密码,新密码不能和旧密码一致,且两次输入的密码一致
+            if ($data['oldpassword'] == $data['newpassword'] || $data['newpassword'] !== $data['repassword']) {
+                $this->error = "新旧密码相等或者确认密码与新密码不相等";
+                return false;
+            }
+            //密码必须加密
+            $password = md5($data['newpassword']);
+
+            //>>准备sql
+            $sql .= ",password='{$password}'";
+        }
+
+        if(isset($data['logo'])){
+            $sql .= ",photo='{$data['logo']}'";
+        }
+        $sql .= " WHERE members_id={$data['id']}";
+        //>>2.执行sql
+        return $this->db->execute($sql);
+    }
+    //删除管理员
+    public function delete($id)
+    {
+            $sql = "delete from  `Members` where members_id='{$id}'";
+        //执行sql
+        $this->db->execute($sql);
+    }
+    //根据传入的传值
+    public  function  shenhe($data){
+        if ($data['status']>0){
+            $data['status']=0;
+        }else{
+            $data['status']=1;
+        }
+//修改数据库
+        $sql="update `Members` set is_admin='{$data['status']}' where members_id='{$data['id']}'";
+//执行sql
+        return  $this->db->execute($sql);
+
+    }
+
+}

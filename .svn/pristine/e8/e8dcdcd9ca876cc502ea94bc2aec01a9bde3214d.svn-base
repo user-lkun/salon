@@ -1,0 +1,170 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/6/2 0002
+ * Time: 上午 11:12
+ */
+
+namespace Application\Model;
+
+
+use Framework\Model;
+
+class ArticleModel  extends  Model
+{//根据传入的条件查询
+    public  function  index($tiaojian=[],$page){
+        $where = '';
+        //接收条件,根据条件判定implode将一个数组拼接成字符串
+        if (!empty($tiaojian)) {
+            $where = " where " . implode(' and ', $tiaojian);
+        }
+        //设定每页的查询条数
+        $pagesize = 4;
+        //查询总的条数
+        $count = $this->db->fetchColumn("select count(*)  from  `article`  {$where}");
+        //查询总的总页数,向上取整
+        $zongyeshu = ceil($count / $pagesize);
+        //dump($zongyeshu);exit();
+        $page = $page > $zongyeshu ? $zongyeshu : $page;
+//需要球开始页(当前页-1)乘以每页条数
+        //当前页不能小于1,不能大于总页数
+        $page = $page < 1 ? 1 : $page;
+        $start = ($page - 1) * $pagesize;
+        $limit = " limit $start,$pagesize";
+        //>>1.准备sql
+        $sql = "select * from `article` " . $where . $limit;
+        //dump($sql);
+        //>>2.执行sql
+        $result = $this->db->fetchAll($sql);
+        //需要将值全部返回出去
+        return array('result' => $result, 'page' => $page, 'pagesize' => $pagesize, 'count' => $count, 'zongyeshu' => $zongyeshu);
+    }
+    //查询文章详情
+    public  function  content($id){
+        $sql="select content from `article` where article_id='{$id}'";
+        $result=$this->db->fetchColumn($sql);
+        return $result;
+    }
+    //根据传入值确定状态
+    public  function  shenhe($data){
+        if ($data['status']>0){
+            $data['status']=0;
+        }else{
+            $data['status']=1;
+        }
+//修改数据库
+        $sql="update `Article` set status='{$data['status']}' where article_id='{$data['id']}'";
+//执行sql
+        return  $this->db->execute($sql);
+    }
+    //添加活动
+    public function  add($data)
+    {
+        //判断输入的用户名是否为空
+        if (empty($data['title'])) {
+            //保存错误信息
+            $this->error = "标题不能为空";
+            return false;
+        }
+        //开始时间
+        if (empty($data['start'])) {
+            //保存错误信息
+            $this->error = "开始时间不能为空";
+            return false;
+        }
+        //结束时间
+        if (empty($data['end'])) {
+            //保存错误信息
+            $this->error = "结束时间不能为空";
+            return false;
+        }
+        //活动详情
+        if (empty($data['editorValue'])) {
+            //保存错误信息
+            $this->error = "活动详情不能为空";
+            return false;
+        }
+        //添加活动页
+        $content=$data['editorValue'];
+        $time=time();
+        //将开始时间和结束时间用时间戳存入数据库
+        $start=strtotime($data['start']);
+        $end=strtotime($data['end']);
+        //写sql
+        $sql="insert into `article`(status,title,content,start,end,time) VALUES (
+'{$data['status']}',
+'{$data['title']}',
+'{$content}',
+'{$start}',
+'{$end}',
+'{$time}'
+)";
+        //执行sql
+        return $this->db->execute($sql);
+    }
+//根据传入的id,查询
+    public  function  getone($id){
+        $sql = "select * from `article` where article_id={$id}";
+        //执行sql并返回值
+        $result = $this->db->fetchRow($sql);
+        //返回值
+        return $result;
+
+    }
+//修改保存
+    public function edit($data)
+    {//判断输入的用户名是否为空
+        if (empty($data['title'])) {
+            //保存错误信息
+            $this->error = "标题不能为空";
+            return false;
+        }
+        //开始时间
+        if (empty($data['start'])) {
+            //保存错误信息
+            $this->error = "开始时间不能为空";
+            return false;
+        }
+        //结束时间
+        if (empty($data['end'])) {
+            //保存错误信息
+            $this->error = "结束时间不能为空";
+            return false;
+        }
+        //活动详情
+        if (empty($data['content'])) {
+            //保存错误信息
+            $this->error = "活动详情不能为空";
+            return false;
+        }
+        //开始时间不能大于结束时间
+        $start=strtotime($data['start']);
+        $end=strtotime($data['end']);
+     if ($start>$end){
+         $this->error='活动开始时间不能大于活动结束时间';
+         return false;
+     }
+        //将开始时间和结束时间用时间戳存入数据库
+        $start=strtotime($data['start']);
+        $end=strtotime($data['end']);
+        //        不修改密码,只修改用户名和邮箱*/
+        //3.1如果旧密码(这里手输)为空,代表不修改密码,这个时候只用修改用户名和邮
+        $sql = "update `article` set 
+title='{$data['title']}',
+status='{$data['status']}',
+end='{$data['end']}',
+status='{$start}',
+content='{$end}'
+ where article_id='{$data['id']}'";
+        //>>准备sql
+        //>>2.执行sql
+        return $this->db->execute($sql);
+    }
+    //删除活动
+    public  function  delete($id){
+        $sql = "delete from  `Article` where article_id='{$id}'";
+        //执行sql
+       return $this->db->execute($sql);
+    }
+}

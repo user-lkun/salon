@@ -1,0 +1,109 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="Generator" content="ECSHOP v2.7.3" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+
+    <title>用户中心_ECSHOP演示站 - Powered by ECShop</title>
+
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" href="animated_favicon.gif" type="image/gif" />
+    <link href="./Public/Home/css/css.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="./Public/Home/js/common.js"></script><script type="text/javascript" src="./Public/Home/js/user.js"></script><script type="text/javascript" src="./Public/Home/js/transport.js"></script>
+<body>
+
+
+
+
+<div class="block box">
+    <div id="ur_here">
+        当前位置: <a href="?p=Home&c=Index&a=index">首页</a> <code>&gt;</code> 用户注册  </div>
+</div>
+
+<div class="blank"></div>
+
+
+
+
+<div class="usBox">
+    <div class="usBox_2 clearfix">
+        <div class="regtitle"></div>
+        <form enctype="multipart/form-data" action="index.php?p=Home&c=UserLogin&a=register" method="post" name="formUser" onsubmit="return register(); ">
+            <table width="100%"  border="0" align="left" cellpadding="5" cellspacing="3">
+                <tr>
+                    <td width="13%" align="right">用户名</td>
+                    <td width="87%">
+                        <input name="username" type="text" size="25" id="username" class="inputBg"/>
+                        <span id="username_notice" style="color:#FF0000"> *</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">密码</td>
+                    <td>
+                        <input name="password" type="password" id="password1" onblur="check_password(this.value);" onkeyup="checkIntensity(this.value)" class="inputBg" style="width:179px;" />
+                        <span style="color:#FF0000" id="password_notice"> *</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right">确认密码</td>
+                    <td>
+                        <input name="repassword" type="password" id="conform_password" onblur="check_conform_password(this.value);"  class="inputBg" style="width:179px;"/>
+                        <span style="color:#FF0000" id="conform_password_notice"> *</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right" id="extend_field1i">真实姓名        <td>
+                    <input name="realname" type="text" size="25" class="inputBg" /><span style="color:#FF0000"> *</span>          </td>
+                </tr>
+                <tr>
+                    <td align="right" id="extend_field2i">性别         <td >
+                     男<input name="sex[]" type="radio" value="0" checked="checked">
+                    女<input name="sex[]" type="radio"
+                value="1"/>       </td>
+                </tr>
+
+                <tr>
+                    <td align="right" id="extend_field5i">手机          <td>
+                    <input  type="text" size="25" class="inputBg" name="telephone" /><span style="color:#FF0000"> *</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="right" id="extend_field5">请上传头像</td>
+                    <td>
+                        <input type="file" name="photo" id="logo" size="45" title="允许上传png不大于2M" ><br/>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td align="left">
+                        <input name="Submit" type="submit" value="" class="us_Submit_reg">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td class="actionSub">
+                        <a href="index.php?p=Home&c=UserLogin&a=login">我已有账号，我要登录</a><br />
+
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+</body>
+
+</html>

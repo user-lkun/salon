@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>后台管理系统-HTML5后台管理系统</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="author" content="DeathGhost" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="./Public/Admin/images/icon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="./Public/Admin/css/style.css" />
+<script src="./Public/Admin/javascript/jquery.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/layerUi/layer.js"></script>
+<script src="./Public/Admin/editor/ueditor.config.js"></script>
+<script src="./Public/Admin/editor/ueditor.all.js"></script>
+<script src="./Public/Admin/javascript/plug-ins/pagination.js"></script>
+<script src="./Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<div class="main-wrap">
+	<?php require "Application/View/Admin/left.html"?>
+	<div class="content-wrap">
+		<?php require "Application/View/Admin/header.html"?>
+		<main class="main-cont content mCustomScrollbar">
+			<div class="page-wrap">
+				<!--开始::内容-->
+				<section class="page-hd">
+					<header>
+						<h2 class="title">日志列表</h2>
+						<p class="title-description">
+
+						<div class="fr input-group">
+						<form action="index.php?P=Admin&c=User&a=index">
+							<input type="text" class="form-control" placeholder="搜索..." style="width:290px;" name="keyword"/>
+						</form>
+							<button class="btn btn-secondary-outline">搜索</button>
+						</div>
+
+						</p>
+					</header>
+					<hr>
+				</section>
+
+
+				<table class="table table-bordered  mb-15">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>用户名</th>
+							<th>服务员</th>
+							<th>类型</th>
+							<th>金额</th>
+							<th>操作内容</th>
+							<th>时间</th>
+							<th>余额</th>
+
+
+
+
+						</tr>
+					</thead>
+					<tbody>
+					<?php foreach($list as $val):?>
+						<tr class="cen">
+							<td><?=$val['history_id']?></td>
+							<td><?=$val['user']?></td>
+							<td><?=$val['member']?></td>
+							<td><?=$val['type']==1?'消费':'充值'?></td>
+							<td><?=$val['amount']?></td>
+							<td><?=$val['content']?></td>
+							<td><?=date('Y-m-d H:i:s',$val['time'])?></td>
+							<td><?=$val['remainder']?></td>
+
+						</tr>
+					<?php endforeach;?>
+
+					</tbody>
+				</table>
+<!--分页-->
+				<?=$page_html?>
+				<!--开始::结束-->
+			</div>
+		</main>
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+			</p>
+		</footer>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>美发后台管理系统</title>
+    <meta name="keywords"  content="设置关键词..." />
+    <meta name="description" content="设置描述..." />
+    <meta name="author" content="DeathGhost" />
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <link rel="icon" href="Public/Admin/imagesicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="Public/Admin/css/style.css" />
+    <script src="Public/Admin/javascript/jquery.js"></script>
+    <script src="Public/Admin/javascript/plug-ins/customScrollbar.min.js"></script>
+    <script src="Public/Admin/javascript/plug-ins/echarts.min.js"></script>
+    <script src="Public/Admin/javascrip/tplug-ins/layerUi/layer.js"></script>
+    <script src="Public/Admin/editor/ueditor.config.js"></script>
+    <script src="Public/Admin/editor/ueditor.all.js"></script>
+    <script src="Public/Admin/javascript/plug-ins/pagination.js"></script>
+    <script src="Public/Admin/javascript/public.js"></script>
+</head>
+<body>
+<div class="main-wrap">
+    <?php require "Application/View/Admin/left.html"?>
+    <div class="content-wrap">
+        <?php require "Application/View/Admin/header.html"?>
+        <main class="main-cont content mCustomScrollbar">
+
+            <div class="col-md-6 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>新增代金券 </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br>
+                        <form class="form-horizontal form-label-left input_mask" method="post" action="?p=Admin&c=Daijinquan&a=add">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">代金券数量</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" name="number">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">授权管理员</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"  placeholder="<?=$_SESSION['xinxi']['username']?>" disabled="disabled">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">代金券金额
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" name="money">
+                                </div>
+                            </div>
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+
+                                    <input type="submit" class="btn btn-warning" value="添加">
+                                    <a href="?p=Admin&c=Daijinquan&a=index" class="btn btn-primary">返回</a>
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </main>
+        <footer class="btm-ft">
+            <p class="clear">
+                <span class="fl">©Copyright 2016 <a href="#" title="DeathGhost" target="_blank">DeathGhost.cn</a></span>
+                <span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+						author:deathghost
+					</em> |
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						更多模板： <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+					</em>
+					<a onclick="reciprocate()" class="text-primary"><i class="icon-qrcode"></i>捐赠</a>
+				</span>
+            </p>
+        </footer>
+    </div>
+</div>
+</body>
+</html>

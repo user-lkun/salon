@@ -1,0 +1,117 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: 35482
+ * Date: 2018/6/1
+ * Time: 19:35
+ */
+
+namespace Application\Model;
+
+
+use Framework\Model;
+
+class UserModel extends Model
+{
+    //获取所有信息
+    public function getall(){
+        return $this->db->fetchAll("select * from users");
+    }
+    //获取一条信息
+    public function getone($id){
+        return $this->db->fetchRow("select * from users where user_id='{$id}'");
+    }
+    //注册,添加会员
+    public function register($data){
+        //常识判断
+        if(empty($data['username'])||empty($data['realname'])){
+            $this->error="用户名和真实姓名不能为空";
+            return false;
+        }
+        if(empty($data['telephone'])){
+            $this->error="手机号码不能为空";
+            return false;
+        }
+        if($data['password']!=$data['repassword']){
+            $this->error="确认密码不正确";
+            return false;
+        }
+        //结束
+
+        //头像为空默认头像
+        if(empty($data['photo'])){
+            $data['photo']="./Public/default.png";
+        }
+
+        $password=md5($data['password']);
+        $sex=array_sum($data['sex']);
+        return $this->db->execute("insert into users(`username`,`password`,`realname`,`sex`,`telephone`,`photo`,`remark`)VALUES(
+'{$data['usrname']}',
+'{$data['realname']}',
+'{$password}',
+'{$sex}',
+'{$data['telephone']}',
+'{$data['photo']}',
+'{$data['remark']}'
+)");
+
+    }
+    //修改编辑会员
+    public function update($data){
+        $showone=$this->db->fetchRow("select * from users where user_id='{$data['id']}'");
+        $showuser=$this->db->fetchAll("select * from users where username='{$data['username']}'");
+
+        if(empty($data['username'])){
+            $this->error="用户名不能为空";
+            return false;
+        }
+        $oldpassword=md5($data['password']);
+        if($showone['password']!=$oldpassword){
+            $this->error="原密码错误,请重新输入";
+            return false;
+        }
+        if (isset($showuser['username'])){
+            if ($data['username'] == $showuser['username']) {
+                $this->error = "用户名已经被注册,请重新输入";
+                return false;
+            }
+        }
+        if(empty($data['newpassword'])||empty($data['repassword'])){
+            $this->error="新密码不能为空";
+            return false;
+        }
+        if($data['newpassword']!=$data['repassword']){
+            $this->error="新密码不一致,重新输入";
+            return false;
+        }
+
+        $newpassword=md5($data['newpassword']);
+        if($newpassword==$showone['password']){
+            $this->error="不能与原密码一致";
+            return false;
+        }
+        //头像为空默认头像
+        if(empty($data['photo'])){
+            $data['photo']="./Public/default.png";
+        }
+
+        $sex=array_sum($data['sex']);
+        return $this->db->execute("update users set 
+username='{$data['username']}',
+password='{$newpassword}',
+realname='{$data['realname']}',
+telephone='{$data['telephone']}',
+remark='{$data['remark']}',
+money='{$data['money']}',
+sex='{$sex}',
+photo='{$data['photo']}'
+ where user_id='{$data['id']}'
+");
+    }
+    //删除会员
+    public function getout($id){
+
+        $this->db->execute("delete from users where user_id='{$id}'");
+    }
+
+}

@@ -1,0 +1,127 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2018/5/29 0029
+ * Time: 下午 7:16
+ */
+namespace Framework\Tools;
+
+use Application\Model\PlatformModel;
+use Framework\Controller;
+class PlatformController extends Controller
+{
+
+    //对上传图片限制,判断制作头像地址,返回原图路径制作缩略图
+    public function touxiang($head)
+    {
+
+//判断文件大小
+        $neicun = 4 * 1024 * 1024;
+        if ($head['size'] > $neicun) {
+            $this->error = '上传文件过大';
+            return false;
+        }
+//判断文件的类型
+//上传图片的格式 image/png,image/jpeg,image/gif
+        $leixing = ['image/png', 'image/jpeg', 'image/gif'];
+        if (!in_array($head['type'], $leixing)) {
+            $this->error = '图片格式错误';
+            return false;
+        }
+//判断文件是否上传成功error=0,如果值不为0,表示上传失败
+        if ($head['error'] != 0) {
+            $this->error = '文件上传失败';
+            exit();
+
+        }
+//判断文件是否通过http post方式上传
+        if (!is_uploaded_file($head['tmp_name'])) {
+            $this->error = '不是通过http post方式上传';
+            return false;
+        }
+//处理文件名
+//截取后缀
+        $houzhui = strrchr($head['name'], '.');
+//生成唯一的文件名uniqid生成唯一的字符串
+        $wenjianmin = uniqid('image_');
+//a创建目录一个分日期存储用.连接
+        $dir = "./tupian/touxiang/" . date("Ymd") . '/';
+//a1,判断目录是否存在,如果没有目录就创建一个目录
+//is_dir():判断目录是否存在
+//mkdir//创建一个目录
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777, true);
+        }
+//创建一个完整的路径目录加文件名加后缀
+        $lujing = $dir . $wenjianmin . $houzhui;
+
+//>>. 是否移动成功
+//move_uploaded_file(临时文件地址,新的地址)将上传的文件移动到新的位置;
+        if (!move_uploaded_file($head['tmp_name'], $lujing)) {
+            $this->error = "移动文件失败!";
+            return false;
+        }
+//>> 上传成功返回路径
+        return $lujing;
+    }
+
+    //分页工具条
+    public function fenye($url, $count, $totalPage, $page, $pageSize)
+    {
+//字符串中不能运算,所以需要在外面运算上一页和下一页
+        $shangyiye = ($page - 1) < 1 ? 1 : ($page - 1);
+        $xiayiye = ($page + 1) > $totalPage ? $totalPage : ($page + 1);
+        $httml = <<<fenye
+  <table id="page-table" cellspacing="0">
+        <tbody>
+            <tr>
+                <td align="right" nowrap="true" style="background-color: rgb(255, 255, 255);">
+                 
+                    <div id="turn-page">
+                        总计  <span id="totalRecords">{$count}</span>个记录分为 <span id="totalPages">{$totalPage}</span>页当前第 <span id="pageCurrent">{$page}</span>
+                        页，每页 <input type="text" size="3" id="pageSize" value="{$pageSize}" onkeypress="return listTable.changePageSize(event)">
+                        <span id="page-link">
+                            <a href="{$url}&page=1">第一页</a>
+                            <a href="{$url}&page={$shangyiye}">上一页</a>
+                            <a href="{$url}&page={$xiayiye}">下一页</a>
+                           <a href="{$url}&page={$totalPage}">最末页</a>
+                            <select id="gotoPage" onchange="listTable.gotoPage(this.value)">
+                            <option value="1">1</option><option value="2">2</option>          </select>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+fenye;
+        return $httml;
+    }
+
+
+//自动验证登录
+    public function yanzhengdenglu()
+    {
+        @session_start();
+        if (!isset($_SESSION['xinxi'])) {
+            //没有session信息,验证cook的值
+            if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+                $name = $_COOKIE['username'];
+                $password = $_COOKIE['password'];
+                //验证用户信息成功保存信息到session,错误返回flase
+                $model=new PlatformModel();
+                $result =  $model->tongyiyanzhen($name,$password );
+                if ($result != false) {
+                    //验证成功保存session
+                    $_SESSION['xinxi'] = $result;
+                } else {
+                    //验证失败,返回登录
+                    $this->redirect('index.php?p=Admin&c=Denglu&a=index', '验证失败返回登录', 2);
+                }
+            } else {
+                //验证失败,返回登录
+                $this->redirect('index.php?p=Admin&c=Denglu&a=index', '验证失败返回登录', 2);
+            }
+        }
+    }
+}
